@@ -20,12 +20,11 @@ class BoxList extends Component {
   }
 
   delete(e) {
-    e.target.parentElement.remove();
     const targetId = e.target.parentElement.id;
-    const filteredBoxes = this.state.boxes.filter((box) => box.id !== targetId);
-
-    // Can't get the array to update
-    // this.setState((state) => ({ boxes: [...filteredBoxes] }));
+    const filteredBoxes = [...this.state.boxes].filter(
+      (box) => box.id !== targetId
+    );
+    this.setState({ boxes: filteredBoxes });
   }
 
   render() {
